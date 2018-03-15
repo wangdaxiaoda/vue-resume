@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>{{title}}</h2>
+        <h2>{{myTitle}}</h2>
         <p v-for="item in items" :key="item.id">{{item.title}}:{{item.text}}</p>
     </div>
 </template>
@@ -16,6 +16,6 @@ export default {
           email: '123@123.com'
       }
   },
-  props: ['items', 'title']
+  props: ['items', 'myTitle']
 }
 </script>

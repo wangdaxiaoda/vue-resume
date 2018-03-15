@@ -1,22 +1,20 @@
 <template>
   <div id="app">
-    <type1 :items="items" :title="title">
-    </type1>
     <div class="workExp">
       <h1>项目与工作经历</h1>
-      <workExp></workExp>
+      <work :work-exp="myData.workExp"></work>
     </div>
   </div>
 </template>
 
 <script>
-  import type1 from './components/basic';
-  import workExp from './components/workExp';
+  import work from './components/workExp'
   import perData from './data/data'
   export default {
     data() {
       return {
         title: perData.wanted.profession,
+        myData: perData,
         newTodoText: '',
         items: [{
             id: 1,
@@ -38,8 +36,7 @@
       }
     },
     components: {
-      type1,
-      workExp
+      work
     }
   };
 </script>
@@ -49,8 +46,8 @@
     font-family: "Avenir", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
+    margin-top: 20px;
+    padding-left: 20px;
   }
 </style>
