@@ -1,5 +1,6 @@
 export default {
   basic: {
+    title: '基本资料',
     name: 'wdxd',
     sex: 'nan',
     phone: '1598745632',
@@ -14,7 +15,7 @@ export default {
     schoolName: '家里蹲',
     time: '2000-2005',
     major: '数字',
-    Education: 'benke'
+    education: 'benke'
   },
   workExp: [{
     companyName: 'sibei',
