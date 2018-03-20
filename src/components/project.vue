@@ -1,9 +1,9 @@
 <template>
     <div>
         <div v-for="(project, index) in projects" :key="project.projectName" class="project">
-            <p class="pText">项目名称：<b class="projectName">{{project.projectName}}</b>({{project.time}})}<button class="funcButt">编辑</button></p>
-            <p class="pText">项目描述：{{project.projectDescribe}}<button class="funcButt">编辑</button></p>
-            <p class="pText">项目职责：{{project.duty}}<button class="funcButt">编辑</button></p>
+            <p class="pText">项目名称：<b class="projectName">{{project.projectName}}</b>({{project.time}})</p>
+            <p class="pText">项目描述：{{project.projectDescribe}}<input class="editInput" v-model="project.projectDescribe" @keyup.enter="hideEditInput"><button class="funcButt" @click="showEditInput">编辑</button></p>
+            <p class="pText">项目职责：{{project.duty}}<input class="editInput" v-model="project.duty" @keyup.enter="hideEditInput"><button class="funcButt" @click="showEditInput">编辑</button></p>
             <button class="funcButt deletePro" @click="deleteProject(index)">删除项目</button>
         </div>
         <button class="funcButt" @click="addProject">添加项目经验</button>
@@ -12,14 +12,10 @@
 
 <script>
     import {
-        editItem
+        hideEditInput,
+        showEditInput
     } from '../common'
     export default {
-        data() {
-            return {
-                myProjects: this.projects
-            }
-        },
         props: ['projects'],
         methods: {
             addProject: function() {
@@ -32,7 +28,9 @@
             },
             deleteProject: function(index) {
                 this.projects.splice(index, 1);
-            }
+            },
+            hideEditInput,
+            showEditInput
         }
     }
 </script>

@@ -23,6 +23,7 @@
     import work from './components/workExp'
     import perData from './data/data'
     import basic from './components/basic'
+    import $ from 'jquery'
     export default {
         data() {
             return {
@@ -90,6 +91,15 @@
     
     #app>div {
         margin-bottom: 10px
+    }
+
+    .funcButt {
+        margin-left: 5px;
+    }
+
+    .editInput {
+        display: none;
+        margin-left: 5px;
     }
 
     .pText {

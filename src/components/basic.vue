@@ -1,7 +1,8 @@
 <template>
     <div>
         <h2>{{items.title}}</h2>
-        <p v-for="(value, key) in items.message" :key="key" class="pText">{{value.text}}{{value.value}}<input v-model="value.value" v-if="false"><button class="funcButt">编辑</button><button class="funcButt" @click.prevent="removeItem">删除</button>
+        <p v-for="(value, key) in items.message" :key="key" class="pText">{{value.text}}{{value.value}}<input class="editInput" v-model="value.value" @keyup.enter="hideEditInput">
+        <button class="funcButt" @click="showEditInput">编辑</button><button class="funcButt" @click.prevent="removeItem">删除</button>
         </p>
         <p>
             <input type="text" class="itemText" 
@@ -20,7 +21,7 @@
 </template>
 
 <script>
-    import {removeItem, editItem} from '../common'
+    import {removeItem, hideEditInput, showEditInput} from '../common'
     export default {
         data() {
             return {
@@ -55,7 +56,9 @@
                 }
                 this.isText = this.isValue = !0;
             },
-            removeItem
+            removeItem,
+            hideEditInput,
+            showEditInput
         }
     }
 </script>
