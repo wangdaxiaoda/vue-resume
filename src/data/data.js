@@ -63,6 +63,6 @@ export default {
       duty: 'play play play'
     }]
   }],
-  personalSkills: '1231231',
+  personalSkills: ['213', '234', '231'],
   introduction: '我需要三件东西：爱情友谊和图书。然而这三者之间何其相通！炽热的爱情可以充实图书的内容，图书又是人们最忠实的朋友.'
 }

@@ -9,107 +9,104 @@
         </div>
         <div class="personalSkills">
             <h2>个人技能</h2>
-            <p class="pText">{{personalSkills}}<input v-model="personalSkills" class="editInput" @keyup.enter="hideEditInput"><button class="funcButt" @click="showEditInput">编辑</button></p>
+            <p class="pText">{{personalSkills}}<button class="funcButt">编辑</button></p>
         </div>
         <div class="introduction">
             <h2>个人描述</h2>
-            <p class="pText">{{introduction}}<input v-model="introduction" class="editInput" @keyup.enter="hideEditInput"><button class="funcButt" @click="showEditInput">编辑</button></p>
+            <p class="pText">{{introduction}}<button class="funcButt">编辑</button></p>
         </div>
-        <button class="complete funcButt" @click="complete">完成修改</button>
+        <button class="complete" @click="complete">完成修改</button>
     </div>
 </template>
 
 <script>
-import work from "./components/workExp";
-import perData from "./data/data";
-import basic from "./components/basic";
-import $ from "jquery";
-import { showEditInput, hideEditInput } from "./common";
-export default {
-  data() {
-    return {
-      workExp: perData.workExp,
-      basicItem: perData.basic,
-      wanted: perData.wanted,
-      eduExp: perData.eduExp,
-      introduction: perData.introduction,
-      personalSkills: perData.personalSkills
+    import work from './components/workExp'
+    import perData from './data/data'
+    import basic from './components/basic'
+    import $ from 'jquery'
+    export default {
+        data() {
+            return {
+                workExp: perData.workExp,
+                basicItem: perData.basic,
+                wanted: perData.wanted,
+                eduExp: perData.eduExp,
+                introduction: perData.introduction
+            }
+        },
+        computed: {
+            personalSkills: () => perData.personalSkills.join('')
+        },
+        components: {
+            basic,
+            work
+        },
+        methods: {
+            addBasic: function(text, value) {
+                this.basicItem.message.push({
+                    text: text,
+                    value: value
+                });
+            },
+            addWanted: function() {
+                this.wanted.message.push({
+                    text: text,
+                    value: value
+                })
+            },
+            addEdu: function() {
+                this.eduExp.message.push({
+                    text: text,
+                    value: value
+                })
+            },
+            complete: function() {
+                $('.funcButt').hide();
+            }
+        }
     };
-  },
-  computed: {
-  },
-  components: {
-    basic,
-    work
-  },
-  methods: {
-    addBasic: function(text, value) {
-      this.basicItem.message.push({
-        text: text,
-        value: value
-      });
-    },
-    addWanted: function(text, value) {
-      this.wanted.message.push({
-        text: text,
-        value: value
-      });
-    },
-    addEdu: function(text, value) {
-      this.eduExp.message.push({
-        text: text,
-        value: value
-      });
-    },
-    complete: function() {
-      $(".funcButt").hide();
-    },
-    showEditInput,
-    hideEditInput
-  }
-};
 </script>
 
 <style>
-* {
-  padding: 0;
-  margin: 0;
-}
+    * {
+        padding: 0;
+        margin: 0;
+    }
 
-button {
-  cursor: pointer;
-}
+    button {
+        cursor: pointer;
+    }
+    
+    #app {
+        font-family: "Avenir", Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #2c3e50;
+        position: absolute;
+        padding: 20px 0;
+        left: 50%;
+        margin-left: -300px;
+        width: 600px;
+    }
+    
+    #app>div {
+        margin-bottom: 10px
+    }
 
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  position: absolute;
-  padding: 20px 0;
-  left: 50%;
-  margin-left: -300px;
-  width: 600px;
-}
+    .funcButt {
+        margin-left: 5px;
+    }
 
-#app > div {
-  margin-bottom: 10px;
-}
+    .editInput {
+        display: none;
+        margin-left: 5px;
+    }
 
-.funcButt {
-  margin-left: 5px;
-}
-
-.editInput {
-  display: none;
-  margin-left: 5px;
-}
-
-.pText {
-  width: 488px;
-}
-
-h2 {
-  padding-bottom: 10px;
-}
+    .pText {
+        width: 488px;
+    }
+    
+    h2 {
+        padding-bottom: 10px;
+    }
 </style>
